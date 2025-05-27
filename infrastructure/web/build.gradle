@@ -1,0 +1,24 @@
+dependencies {
+    implementation project(":domain")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework:spring-tx:6.0.8")
+
+    implementation 'io.jsonwebtoken:jjwt:0.12.6'
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+    implementation("io.swagger.parser.v3:swagger-parser:2.1.20")
+    implementation("javax.xml.bind:jaxb-api:2.3.1")
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+
+    testImplementation libs.junitJupiterApi
+    testRuntimeOnly libs.junitJupiterEngine
+    testImplementation libs.springBootStarterTest
+    testImplementation libs.mockitoCore
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,44 @@
+server.shutdown: graceful
+
+spring:
+  application:
+    name: "mailsender"
+  datasource:
+    hikari:
+      connection-timeout: 10000
+      maximum-pool-size: 30
+      minimum-idle: 5
+      idle-timeout: 60000
+    # See docker-compose.yaml
+    url: "jdbc:postgresql://localhost:5435/user-register-db"
+    username: "postgres"
+    password: "postgres"
+    driver-class-name: org.postgresql.Driver
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+management:
+  server:
+    port: 9000
+  endpoints:
+    web:
+      exposure:
+        include: health,loggers,prometheus,threaddump,admin,healthCheck
+      base-path: /
+      path-mapping:
+        prometheus: metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+  health:
+    readinessState:
+      enabled: true
+    livenessState:
+      enabled: true
