@@ -24,7 +24,7 @@ spring:
 
 management:
   server:
-    port: 9000
+    port: 9002
   endpoints:
     web:
       exposure:
@@ -42,3 +42,6 @@ management:
       enabled: true
     livenessState:
       enabled: true
+
+server:
+  port: 8082

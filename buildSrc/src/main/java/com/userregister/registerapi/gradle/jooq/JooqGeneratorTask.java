@@ -10,11 +10,11 @@ import org.slf4j.LoggerFactory;
 public class JooqGeneratorTask extends DefaultTask {
     private static final Logger logger = LoggerFactory.getLogger(JooqGeneratorTask.class);
 
-    public String jdbcUrl = "";
-    public String username = "";
-    public String password = "";
-    public String dbName = "";
-    public String sqlDriver = "";
+    public String jdbcUrl = "jdbc:postgresql://localhost:5435";
+    public String username = "postgres";
+    public String password = "postgres";
+    public String dbName = "user-register-db";
+    public String sqlDriver = "org.postgresql.Driver";
 
     @TaskAction
     public void generateJooqData() {
@@ -50,12 +50,12 @@ public class JooqGeneratorTask extends DefaultTask {
                                     .withSerializableInterfaces(false))
                             .withDatabase(new Database()
                                     .withName("org.jooq.meta.postgres.PostgresDatabase")
-                                    .withIncludes("")
+                                    .withIncludes("users")
                                     .withExcludes("flyway_schema_history")
                                     .withSchemata(new SchemaMappingType()
                                             .withInputSchema("public")))
                             .withTarget(new Target()
-                                    .withPackageName("com.userregister.readerapi.database.jooq")
+                                    .withPackageName("com.userregister.registerapi.database.jooq")
                                     .withDirectory(path)));
 
             GenerationTool.generate(configuration);
