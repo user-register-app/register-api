@@ -30,7 +30,7 @@ jobs:
           server-id: github
           settings-path: ${{ github.workspace }}
 
-      - name: Build with Maven
+      - name: Build with Gradle
         run: ./gradlew clean bootJar -x test
 
       - name: Setup Google Cloud CLI
