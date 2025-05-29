@@ -24,5 +24,4 @@ rootProject.name = 'register-api'
 
 include 'app'
 include 'domain'
-include 'infrastructure:database'
 include 'infrastructure:web'

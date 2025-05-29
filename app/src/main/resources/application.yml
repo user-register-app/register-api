@@ -2,18 +2,7 @@ server.shutdown: graceful
 
 spring:
   application:
-    name: "mailsender"
-  datasource:
-    hikari:
-      connection-timeout: 10000
-      maximum-pool-size: 30
-      minimum-idle: 5
-      idle-timeout: 60000
-    # See docker-compose.yaml
-    url: "jdbc:postgresql://localhost:5435/user-register-db"
-    username: "postgres"
-    password: "postgres"
-    driver-class-name: org.postgresql.Driver
+    name: "register-api"
   servlet:
     multipart:
       max-file-size: 30MB
